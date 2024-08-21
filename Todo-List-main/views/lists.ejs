@@ -1,0 +1,25 @@
+<%- include("header"); -%>
+    
+
+    <div class="box" id="heading">
+        <h1><%= weekday %></h1>
+    </div>
+    <div class="box">
+        <% task.forEach(function(item){ %> 
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="check" value="<%=item._id %>" onChange="this.form.submit()" />
+                    <p> <%= item.name1 %> </p>
+                </div> 
+                <input type="hidden" name="pagename" value="<%= weekday %>" /> 
+            </form>
+        <% }); %>
+        
+        <form method="post" action="/" class="item">
+            <input type="text" name="task" size="50" palceholder="new task"  autocomplete="off"/>
+            <button type="submit" name="button" value= "<%= weekday %>"  >+</button>
+        </form>
+    </div>
+    
+    
+    <%- include("footer"); -%>
